@@ -1,6 +1,6 @@
 <template>
   <div class="header">
-    <div class="logo"></div>
+    <img class="logo" src="../../utils/logo.png">
     <div class="name">CarService</div>
   </div>
 </template>
@@ -25,10 +25,9 @@ export default {
 }
 
 .logo{
-  width:50px;
-  height: 50px;
-  background: aqua;
-
+  width:60px;
+  height: 60px;
+  
 }
 
 .name{

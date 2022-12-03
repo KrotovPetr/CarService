@@ -1,21 +1,16 @@
 <template>
-<div class="contentContainer">
-  <input class="input" placeholder="Логин" ref="loginInput" type="text"/>
-  <input class="input" placeholder="Пароль" ref="passwordInput" type="password"/>
-  <button class="inputButton" @click="checkInfo">Войти</button>
-  <p class="createLink">Создать аккаунт!</p>
-  </div>
+  <h1>Hello!</h1>
+<!--<div class="contentContainer">-->
+<!--  <input class="input" placeholder="Логин" ref="loginInput" type="text"/>-->
+<!--  <input class="input" placeholder="Пароль" ref="passwordInput" type="password"/>-->
+<!--  <button class="inputButton" @click="checkInfo">Войти</button>-->
+<!--  <p class="createLink">Создать аккаунт!</p>-->
+<!--  </div>-->
 </template>
 
 <script>
 export default {
-  name: "LoginPage",
-  methods:{checkInfo(){
-        console.log(this.$refs.loginInput.value+`   `+this.$refs.passwordInput.value);
-
-    }}
-
-
+  name: "LoginPage"
 }
 </script>
 

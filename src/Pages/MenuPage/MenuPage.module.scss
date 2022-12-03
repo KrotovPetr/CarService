@@ -1,0 +1,35 @@
+
+.contentContainer{
+  width:100%;
+  height:86vh;
+  display:flex;
+  flex-flow: row wrap;
+  justify-content: space-around;
+  align-items: center;
+}
+.menuVar{
+  width:300px;
+  height:300px;
+  border-radius: 50px;
+  background: #ffffff;
+  box-shadow:  5px 5px 23px #c5c5c5,
+  -20px -20px 43px #fbfbfb;
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  font-size: 18px;
+  font-weight: bold;
+  cursor:pointer;
+  transition: 0.5s;
+  row-gap: 30px;
+}
+
+.menuVar:hover{
+  transform: scale(1.1,1.1);
+  transition: 1s;
+}
+.menuVar > img {
+  width:100px;
+  height:100px;
+}

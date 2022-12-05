@@ -1,5 +1,5 @@
 <template>
-  <h1>H1llo!</h1>
+  <button @click="this.$router.replace('home')">Назад</button>
 </template>
 
 <script>

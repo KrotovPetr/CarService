@@ -4,6 +4,7 @@ import MenuPage from "../Pages/MenuPage/MenuPage";
 import OrdersPage from "../Pages/OrdersPage/OrdersPage";
 import ServicePage from "@/Pages/ServicesPage/ServicePage";
 import PersonalPage from "@/Pages/PersonalPage/PersonalPage";
+import NewPersonPage from "@/Pages/NewPersonAdditionPage/NewPersonPage";
 
 const routes= [
     {path: '/', name: 'login',   component: LoginPage },
@@ -11,6 +12,7 @@ const routes= [
     {path: '/orders', name: 'orders', component: OrdersPage },
     {path: '/services', name: 'services', component: ServicePage },
     {path: '/personal', name: 'personal', component: PersonalPage },
+    {path: '/newPerson', name: 'newPerson', component: NewPersonPage },
 ]
 
 console.log(process.env)

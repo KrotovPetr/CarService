@@ -4,16 +4,31 @@
       this.$router.replace('home');
     }">&#8592; Назад</p>
     <div :class="$style.personCardsContainer">
-      <div :class="$style.managersList">
-      <div :class="$style.managerCard" v-for="manager in managers" v-bind:key = "manager.id">
-        <h1>Какой-то манагер</h1>
+      <div :class="$style.listHeader"><h1>Наши менеджеры:</h1> <button @click="this.$router.replace('newPerson')">Добавить</button></div>
+      <div :class="$style.personalList">
+
+        <div :class="$style.personalCard" v-for="manager in managers" v-bind:key = "manager.id">
+          <img src="../../utils/Pictures/manager.png" :class="$style.photo"/>
+          <p :class="$style.description">{{manager.first_name}} {{manager.last_name}}</p>
+        </div>
+
+
       </div>
+      <div :class="$style.listHeader"><h1>Наши мастера:</h1><button @click="this.$router.replace('newPerson')">Добавить</button></div>
+      <div :class="$style.personalList">
+        <div :class="$style.personalCard" v-for="mechanic in mechanics" v-bind:key = "mechanic.id">
+          <img src="../../utils/Pictures/pin.png" :class="$style.photo"/>
+          <p :class="$style.description">{{mechanic.first_name}} {{mechanic.last_name}}</p>
+        </div>
+
+
       </div>
     </div>
   </div>
 </template>
 
 <script>
+
 import {getPersonal} from "@/utils/Functions/getPersonal";
 
 export default {
@@ -24,12 +39,12 @@ export default {
       mechanics: [],
     }
   },
-  created() {
-    this.mechanics = getPersonal('managers').then(data=>);
-    this.managers = getPersonal('managers')
+  async created() {
+    this.mechanics = await getPersonal('mechanics').then(data=>data)
+    this.managers= await getPersonal('managers').then(data=>data)
 
-    console.log(this.mechanics)
-  }
+  },
+
 }
 </script>
 <style module src='./PersonalPage.module.scss' lang="scss"></style>

@@ -2,14 +2,16 @@ const {Mechanic, Manager} = require("../models/models");
 
 class PersonalController {
     async createMechanic(req, res) {
-        const {name} = req.body
-        const brand = await Mechanic.create({name})
-        return {status:200, data: res.json(brand)}
+        const login = req.body.last_name+req.body.first_name;
+        const password="123456";
+        const brand = await Mechanic.create({...req.body, login, password})
+        return {status:200}
     }
     async createManager(req, res) {
-        const {name} = req.body
-        const brand = await Manager.create({name})
-        return {status:200, data: res.json(brand)}
+        const login = req.body.last_name+req.body.first_name;
+        const password="123456";
+        const brand = await Manager.create({...req.body, login, password})
+        res.send({status:200})
     }
 
     async getAllManagers(req, res) {
@@ -22,5 +24,6 @@ class PersonalController {
     }
 
 }
+
 
 module.exports = new PersonalController()

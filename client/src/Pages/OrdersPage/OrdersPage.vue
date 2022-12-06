@@ -42,7 +42,14 @@ export default {
       ]
     }
   },
-  name: "OrdersPage"
+  name: "OrdersPage",
+  methods: {
+    getOrders(){
+        
+    }
+  }
+
+
 }
 </script>
 

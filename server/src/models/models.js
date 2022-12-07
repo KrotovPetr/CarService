@@ -84,24 +84,66 @@ const Detail = sequelize.define('detail', {
     tableName: 'detail'
 })
 
+const Warehouse = sequelize.define('warehouse', {
+    idWarehouse: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    Address: {type: DataTypes.STRING,notNull: true},
+    Type: {type: DataTypes.STRING,notNull: true},
+    Phone: {type: DataTypes.STRING,notNull: true},
+    Email: {type: DataTypes.STRING,notNull: true},
+}, {
+    createdAt: false,
+    updatedAt: false,
+    tableName: 'warehouse'
+})
 
-Client.hasOne(Car, {foreignKey: {
-        name: 'client_idclient'
-    }})
-Car.belongsTo(Client, {foreignKey: 'mechanic_idmechanic'})
+const Detail_Warehouse = sequelize.define('detail_warehouse', {
+    idDetail_Warehouse: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    Amount: {type: DataTypes.STRING,notNull: true},
+    Price: {type: DataTypes.STRING,notNull: true},
+    Year: {type: DataTypes.STRING,notNull: true},
+}, {
+    createdAt: false,
+    updatedAt: false,
+    tableName: 'detail_warehouse'
+})
 
-Mechanic.hasOne(Order,{foreignKey: 'mechanic_idmechanic'})
-Order.belongsTo(Mechanic, {foreignKey: 'mechanic_idmechanic'})
+const Order_Carservice = sequelize.define('order_carservice', {
+    idOrderr_Carservice: {type: DataTypes.INTEGER, primaryKey: true, autoIncrement: true},
+    Date: {type: DataTypes.DATE,notNull: true},
+    Type: {type: DataTypes.STRING,notNull: true},
+    Price: {type: DataTypes.STRING,notNull: true},
+}, {
+    createdAt: false,
+    updatedAt: false,
+    tableName: 'orderr_carservice'
+})
 
-Manager.hasOne(Order,{foreignKey: 'manager_idmanager'})
-Order.belongsTo(Manager, {foreignKey: 'mechanic_idmechanic'})
+Client.hasOne(Car, {foreignKey: 'Client_idClient'})
+Car.belongsTo(Client, {foreignKey: 'Client_idClient'})
 
-Detail.hasMany(Order, {foreignKey: 'detail_iddetail'})
-Order.belongsTo(Detail, {foreignKey: 'mechanic_idmechanic'})
+Mechanic.hasOne(Order,{foreignKey: 'Mechanic_idMechanic'})
+Order.belongsTo(Mechanic, {foreignKey: 'Mechanic_idMechanic'})
 
-Client.hasOne(Order,  {foreignKey: 'client_idclient'})
-Order.belongsTo(Client, {foreignKey: 'mechanic_idmechanic'})
+Manager.hasOne(Order,{foreignKey: 'Manager_idManager'})
+Order.belongsTo(Manager, {foreignKey: 'Manager_idManager'})
 
+Detail.hasMany(Order, {foreignKey: 'Detail_idDetail'})
+Order.belongsTo(Detail, {foreignKey: 'Detail_idDetail'})
+
+Client.hasOne(Order,  {foreignKey: 'Client_idClient'})
+Order.belongsTo(Client, {foreignKey: 'Client_idClient'})
+
+Warehouse.hasMany(Detail_Warehouse,  {foreignKey: 'Warehouse_idWarehouse'})
+Detail_Warehouse.belongsTo(Warehouse, {foreignKey:'Warehouse_idWarehouse'})
+
+Detail.hasMany(Detail_Warehouse,  {foreignKey: 'Detail_idDetail'})
+Detail_Warehouse.belongsTo(Detail ,{foreignKey:'Detail_idDetail'})
+
+Order.hasMany(Order_Carservice,  {foreignKey: 'Orderr_idOrderr'})
+Order_Carservice.belongsTo(Order ,{foreignKey:'Orderr_idOrderr'})
+
+CarService.hasMany(Order_Carservice,  {foreignKey: 'CarService_idCarService'})
+Order_Carservice.belongsTo(CarService ,{foreignKey:'CarService_idCarService'})
 module.exports = {
-    CarService, Mechanic, Manager, Client, Car, Order, Detail
+    CarService, Mechanic, Manager, Client, Car, Order, Detail, Warehouse, Detail_Warehouse, Order_Carservice
 }

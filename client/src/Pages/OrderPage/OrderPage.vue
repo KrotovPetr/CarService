@@ -9,7 +9,7 @@
       </div>
       <div :class="$style.buttons">
         <button :class="$style.button" @click="this.$router.replace(`/editOrder/${index}`)">Изменить</button>
-        <button :class="$style.button">Удалить</button>
+        <button :class="$style.button" @click="deleteOrder(this.$router)">Удалить</button>
       </div>
     </div>
     <div :class="$style.secondaryDescription">
@@ -51,7 +51,15 @@ export default {
     }
   },
   methods: {
-
+      async deleteOrder(router){
+        const requestOptions = {
+          method: 'DELETE',
+        };
+        await fetch(`http://localhost:5000/orders?id=${this.index}`, requestOptions)
+            .then(response => response.json())
+            .catch(error => console.log('error', error));
+        router.replace('/orders')
+      }
   },
   async created(){
     this.index = this.$router.currentRoute._value.path.split("/")[2];

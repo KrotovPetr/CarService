@@ -1,18 +1,19 @@
-const {Client, Mechanic, Manager, Detail} = require("../models/models");
+const {Client, Order, Car} = require("../models/models");
 
 class ClientController {
     async createClient(req, res) {
-        const login = req.body.last_name+req.body.first_name;
-        const password="123456";
-        const brand = await Client.create({...req.body, login, password})
-        return {status:200}
+        // console.log(info);
+        const info = await Client.create({...req.body})
+        return {status:200, data: res.json(info)}
     }
     async getAllClients(req, res) {
         const brands = await Client.findAll();
-        console.log(brands);
-
-
         return {status:200, data: res.json(brands)}
+    }
+    async getOneClient(req, res) {
+        let params = req.query.email;
+        let results = await Client.findOne({where: {email: params}, include: [Car]});
+        return {status:200, data: res.json(results)}
     }
 
 }

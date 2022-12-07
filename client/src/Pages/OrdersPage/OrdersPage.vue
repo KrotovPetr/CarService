@@ -1,8 +1,11 @@
 <template>
   <div :class="$style.contentContainer">
-    <p :class="$style.navLink" @click="()=>{
+    <div :class="$style.ordersHeader">
+      <p :class="$style.navLink" @click="()=>{
       this.$router.replace('home');
     }">&#8592; Назад</p>
+      <button :class="$style.addButton" @click="this.$router.replace('/orders/create')">Добавить заказ</button>
+    </div>
     <div :class="$style.ordersContainer">
       <order-component :class="$style.order" v-bind:order="order" v-for="order in orders" v-bind:key="order.idOrderr" @click="this.$router.replace(`/orders/${order.idOrderr}`)"> </order-component>
     </div>

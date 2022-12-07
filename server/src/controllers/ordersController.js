@@ -1,4 +1,6 @@
 const {Order, Mechanic, Manager, Detail, Client} = require("../models/models");
+const getNewData = require("../utils/functions/getNewData");
+const {Sequelize, where} = require("sequelize");
 
 class OrdersController {
     async createOrder(req, res) {
@@ -8,21 +10,14 @@ class OrdersController {
         return {status:200}
     }
     async getAllOrders(req, res) {
-        const brands = await Order.findAll()
-        // let ansArr = brands.map(async (elem) => {
-        //     let mechanic = await Mechanic.findOne(elem["mechanic_idMechanic"]).then(data => data.dataValues)
-        //     // console.log(mechanic)
-        //     let manager = await Manager.findOne(elem["manager_idManager"]).then(data => data.dataValues)
-        //     let detail = await Detail.findOne(elem["detail_idDetail"]).then(data => data.dataValues)
-        //     let client = await Client.findOne(elem["client_idClient"]).then(data => data.dataValues)
-        //     elem["mechanic"] = mechanic["last_name"] + ` ` + mechanic["first_name"];
-        //     elem["manager"] = manager["last_name"] + ` ` + manager["first_name"];
-        //     elem["detail"] = detail;
-        //     elem["client"] = client["last_name"] + ` ` + client["first_name"];
-        //     console.log(elem)
-        //     return elem;
-        // })
-        return {status:200, data: res.json(brands)}
+        let results = await Order.findAll({include:[Manager, Client, Mechanic, Detail]});
+        // let newData = await getNewData(results);
+        return {status:200, data: res.json(results)}
+    }
+    async getOneOrder(req, res) {
+        let id = req.query.id;
+        let results = await Order.findByPk(id,{include:[Manager, Client, Mechanic, Detail]});
+        return {status:200, data: res.json(results)}
     }
 
 }

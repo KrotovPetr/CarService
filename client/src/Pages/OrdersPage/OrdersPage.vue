@@ -4,19 +4,7 @@
       this.$router.replace('home');
     }">&#8592; Назад</p>
     <div :class="$style.ordersContainer">
-      <div :class="$style.order" v-for="order in orders" v-bind:key="order.id">
-        <div :class="$style.orderHeader">
-          <h3 :class="$style.orderNumber">Заказ #{{order.id}}</h3>
-          <img :class="$style.orderStatus" src="../../utils/Pictures/done.png"/>
-        </div>
-        <div :class="$style.orderDescription">
-          <p :class="$style.orderCharact">Client: {{order.author}}</p>
-          <p :class="$style.orderCharact">Manager: {{order.manager}}</p>
-          <p :class="$style.orderCharact">Mechanic: {{order.mechanic}}</p>
-        </div>
-
-        <!--        <order-component />-->
-      </div>
+      <order-component :class="$style.order" v-bind:order="order" v-for="order in orders" v-bind:key="order.idOrderr" @click="this.$router.replace(`/orders/${order.idOrderr}`)"> </order-component>
     </div>
 
   </div>
@@ -24,29 +12,24 @@
 
 <script>
 // import OrderComponent from "@/Components/Order/OrderComponent";
+import OrderComponent from "@/Components/Order/OrderComponent";
 export default {
+  components: {OrderComponent},
   // components: {OrderComponent},
   data() {
     return {
       likes: 0,
-      orders: [
-        {id: 1, author: "Peter", description: "Car washing", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 2, author: "Peter2", description: "Car washing2", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 3, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 4, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 5, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 6, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 7, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 8, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-        {id: 9, author: "Peter3", description: "Car washing3", manager:"Aboba Abobov", mechanic:"Aboba Abobov"},
-      ]
+      orders: []
     }
   },
   name: "OrdersPage",
   methods: {
-    getOrders(){
-        
-    }
+  },
+  async created() {
+    let requestOptions = {
+      method: 'GET',
+    };
+    this.orders = await fetch(`http://localhost:5000/orders/all`, requestOptions).then(res=>res.json()).then(data=>data).catch(e=>console.log(e));
   }
 
 

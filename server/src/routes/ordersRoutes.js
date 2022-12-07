@@ -3,5 +3,6 @@ const router = new Router()
 const ordersController = require('../controllers/ordersController')
 
 router.post('/', ordersController.createOrder)
-router.get('/', ordersController.getAllOrders)
+router.get('/all', ordersController.getAllOrders)
+router.get('/current', ordersController.getOneOrder)
 module.exports=router;

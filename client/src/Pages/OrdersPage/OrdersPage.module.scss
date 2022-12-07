@@ -41,6 +41,7 @@
       flex-flow: row nowrap;
       justify-content: space-between;
       align-items: center;
+      padding: 10px 0 0 0;
 
       .orderNumber{
         margin: 0 0 0 20px;
@@ -48,13 +49,18 @@
       .orderStatus{
         width:40px;
         height:40px;
+        margin: 0 10px 0 0;
       }
     }
 
     .orderDescription{
       align-self: flex-start;
       margin: 20px 0 0 20px;
-
+      display: flex;
+      flex-flow: row nowrap;
+      align-items: center;
+      justify-content: space-around;
+      width:100%;
     }
   }
 }

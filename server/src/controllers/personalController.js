@@ -23,6 +23,15 @@ class PersonalController {
         return {status:200, data: res.json(brands)}
     }
 
+    async getManager(req, res) {
+        const brands = await Manager.findByPk()
+        return {status:200, data: res.json(brands)}
+    }
+    async getMechanic(req, res) {
+        const brands = await Mechanic.findByPk()
+        return {status:200, data: res.json(brands)}
+    }
+
 }
 
 

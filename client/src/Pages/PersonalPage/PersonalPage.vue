@@ -42,7 +42,6 @@ export default {
   async created() {
     this.mechanics = await getPersonal('mechanics').then(data=>data)
     this.managers= await getPersonal('managers').then(data=>data)
-
   },
 
 }

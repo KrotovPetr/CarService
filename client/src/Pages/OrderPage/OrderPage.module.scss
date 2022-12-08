@@ -24,3 +24,24 @@
     width:94%;
   }
 }
+
+.button{
+  width:150px;
+  height: 50px;
+  border: none;
+  margin:10px;
+  background: #4C5973;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+
+.navLink{
+  align-self: flex-start;
+  margin:0 0 0 50px;
+  font-weight: bold;
+  font-size: 18px;
+  cursor:pointer;
+}

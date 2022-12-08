@@ -1,6 +1,4 @@
 const {Order, Mechanic, Manager, Detail, Client} = require("../models/models");
-const getNewData = require("../utils/functions/getNewData");
-const {Sequelize, where} = require("sequelize");
 
 class OrdersController {
     async createOrder(req, res) {
@@ -27,9 +25,22 @@ class OrdersController {
             }});
         return {status:200, message: res.json("Success!")};
     }
+    async updateOneOrder(req, res){
+        let id = req.query.id;
+        console.log(req.body)
+        let results = await Order.update({
+            typeOfService: req.body.typeOfService,
+            Mechanic_idMechanic: req.body.Mechanic_idMechanic,
+            Manager_idManager: req.body.Manager_idManager,
+            Detail_idDetail: req.body.Detail_idDetail,
+            Client_idClient: req.body.Client_idClient,
+            status: req.body.status,
+        }, {where: {
+            idOrderr: id  }});
+        return {status:200, data: res.json(results)}
+    }
 
 
 }
-
 
 module.exports = new OrdersController()

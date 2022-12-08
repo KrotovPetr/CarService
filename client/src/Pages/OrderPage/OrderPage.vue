@@ -1,5 +1,8 @@
 <template>
   <div :class="$style.contentContainer">
+    <p :class="$style.navLink" @click="()=>{
+      this.$router.replace('/orders');
+    }">&#8592; Назад</p>
     <div :class="$style.orderDescription">
       <div :class="$style.characters">
         <p>Заказ: #{{this.orders.idOrderr}}</p>
@@ -15,22 +18,21 @@
     <div :class="$style.secondaryDescription">
       <div :class="$style.clientDescription">
         <h1>Менеджер</h1>
-        <p>ID: #{{this.orders.manager_idmanager}}</p>
+        <p>ID: #{{this.orders.manager.idManager}}</p>
         <p>Ф.И.О.: {{this.orders.manager.last_name + ` `+this.orders.manager.first_name}}</p>
         <p>Контакты: {{this.orders.manager.phone}}</p>
         <p>Почта: {{this.orders.manager.email}}</p>
       </div>
       <div :class="$style.managerDescription">
         <h1>Мастер</h1>
-        <p>ID: #{{this.orders.mechanic_idmechanic}}</p>
+        <p>ID: #{{this.orders.mechanic.idMechanic}}</p>
         <p>Ф.И.О.: {{this.orders.mechanic.last_name + ` `+this.orders.manager.first_name}}</p>
         <p>Контакты: {{this.orders.mechanic.phone}}</p>
-        <p>Почта: {{this.orders.mechanic.email}}</p>
         <p>Квалификация: {{this.orders.mechanic.qualification}}</p>
       </div>
       <div :class="$style.mechanicDescription">
         <h1>Данные клиента</h1>
-        <p>ID: #{{this.orders.client_idclient}}</p>
+        <p>ID: #{{this.orders.client.idClient}}</p>
         <p>Ф.И.О.: {{this.orders.client.last_name + ` `+this.orders.client.first_name}}</p>
         <p>Контакты: {{this.orders.client.phone}}</p>
         <p>Почта: {{this.orders.client.email}}</p>

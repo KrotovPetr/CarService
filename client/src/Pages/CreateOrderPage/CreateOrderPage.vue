@@ -184,7 +184,7 @@ export default {
         redirect: 'follow'
       };
       await fetch(`http://localhost:5000/order-carservice`, requestOptions).then(res=>res.json()).then(data=>data).catch(e)
-      router.replace('home');
+      router.replace('/orders');
     }
 
   },

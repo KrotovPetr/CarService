@@ -8,7 +8,7 @@ class DetailController {
     }
     async getAllDetails(req, res) {
         const brands = await Detail.findAll();
-        console.log(brands);
+        // console.log(brands);
         return {status:200, data: res.json(brands)}
     }
 

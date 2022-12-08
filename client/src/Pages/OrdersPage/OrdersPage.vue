@@ -33,6 +33,7 @@ export default {
       method: 'GET',
     };
     this.orders = await fetch(`http://localhost:5000/orders/all`, requestOptions).then(res=>res.json()).then(data=>data).catch(e=>console.log(e));
+    console.log(this.orders)
   }
 
 

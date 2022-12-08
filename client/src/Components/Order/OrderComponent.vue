@@ -9,12 +9,12 @@
     <div :class="$style.orderDescription">
       <div :class="$style.desriptionColumn">
         <p :class="$style.orderCharact">Deed number: {{order["deed_number"]}}</p>
-        <p :class="$style.orderCharact">Manager ID: {{order["Data"]}}</p>
+        <p :class="$style.orderCharact">Service: {{order.typeOfService}}</p>
       </div>
       <div :class="$style.desriptionColumn">
-        <p :class="$style.orderCharact">Client ID: {{order["client_idclient"]}}</p>
-        <p :class="$style.orderCharact">Manager ID: {{order["manager_idmanager"]}}</p>
-        <p :class="$style.orderCharact">Mechanic ID: {{order["mechanic_idmechanic"]}}</p>
+        <p :class="$style.orderCharact">Client: {{order.client.last_name}}  {{order.client.first_name}}</p>
+        <p :class="$style.orderCharact">Manager: {{order.manager.last_name}}  {{order.manager.first_name}}</p>
+        <p :class="$style.orderCharact">Mechanic: {{order.mechanic.last_name}}  {{order.mechanic.first_name}}</p>
       </div>
     </div>
   </div>

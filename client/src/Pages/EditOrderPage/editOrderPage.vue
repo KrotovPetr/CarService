@@ -127,7 +127,7 @@ export default {
         redirect: 'follow'
       };
       await fetch(`http://localhost:5000/orders?id=${this.order.idOrderr}`, requestOptions).then(res=>res.json()).then(data=>data).catch(e=>console.log(e))
-      router.replace('/home');
+      router.replace('/orders');
     }
   },
   async created(){

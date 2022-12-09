@@ -8,6 +8,8 @@ import NewPersonPage from "@/Pages/NewPersonAdditionPage/NewPersonPage";
 import OrderPage from "@/Pages/OrderPage/OrderPage";
 import editOrderPage from "@/Pages/EditOrderPage/editOrderPage";
 import createOrderPage from "@/Pages/CreateOrderPage/CreateOrderPage";
+import warehousePage from "@/Pages/WarehousePage/WarehousePage";
+import detailsPage from "@/Pages/DetailsPage/DetailsPage";
 
 const routes= [
     {path: '/', name: 'login',   component: LoginPage },
@@ -19,6 +21,9 @@ const routes= [
     {path: '/orders/:id', name: 'order', component: OrderPage},
     {path: '/editOrder/:id', name: 'editOrder', component: editOrderPage},
     {path: '/orders/create', name: 'createOrder', component: createOrderPage},
+    {path: '/warehouse', name: 'warehouse', component: warehousePage},
+    {path: '/detail', name: 'detail', component: detailsPage},
+
 ]
 
 const router = createRouter({

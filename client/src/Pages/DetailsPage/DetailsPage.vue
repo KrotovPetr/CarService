@@ -1,27 +1,24 @@
 <template>
   <button @click="this.$router.replace('/home')" class="button">Назад</button>
-  <div  class="contentContainer">
-    <h1>Riviera</h1>
-    <p>Address: 44 Evergreen Avenue</p>
-    <p>Phone: 693-510-0688</p>
-  </div>
-
-  <div  class="contentContainer">
-    <h1>Argo</h1>
-    <p>Address: 4 85 Express Point</p>
-    <p>Phone: 178-15-23</p>
-  </div>
-
-  <div class="contentContainer">
-    <h1>Redis</h1>
-    <p>Address: 1464 Dixon Circle </p>
-    <p>Phone: 333-33-38</p>
+  <div  class="contentContainer" v-for="detail in details" v-bind:key="detail.idDetail">
+    <h1> Serial number: {{detail.serial_number}}</h1>
+    <p> Brand: {{detail.Brand}}</p>
+    <p> Colour: {{detail.Colour}}</p>
   </div>
 </template>
 
 <script>
 export default {
-  name: "WarehousePage"
+  name: "DetailsPage",
+  data(){
+    return{
+      details: [],
+    }
+  },
+  async created(){
+    this.details = await fetch(`http://localhost:5000/detail/all`).then(res=>res.json()).then(data=>data).catch(e=>console.log(e))
+    console.log(this.details)
+  }
 }
 </script>
 

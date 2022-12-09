@@ -2,14 +2,37 @@
   <div class="contentContainer">
     <input class="input" placeholder="Логин" ref="loginInput" type="text"/>
     <input class="input" placeholder="Пароль" ref="passwordInput" type="password"/>
-    <button class="inputButton" @click="this.$router.replace('home')">Войти</button>
-    <p class="createLink">Создать аккаунт!</p>
+    <button class="inputButton" @click="loginUser(this.$router)">Войти</button>
   </div>
 </template>
 
 <script>
 export default {
-  name: "LoginPage"
+  name: "LoginPage",
+  data(){
+    return{
+      managers: [],
+    }
+  },
+  methods: {
+    async loginUser(router){
+      let login = this.$refs.loginInput.value;
+      let password = this.$refs.passwordInput.value;
+      let user = this.managers.filter((elem)=>
+        elem.login === login
+      )
+      if(user[0].length!==0){
+        if(password === user[0].password){
+          router.replace('home');
+        }
+      } else {
+        alert("Некорректные данные!")
+      }
+    }
+  },
+  async created(){
+    this.managers = await fetch(`http://localhost:5000/personal/managers`).then(res=>res.json()).then(data=>data).catch(e=>console.log(e));
+  }
 }
 </script>
 

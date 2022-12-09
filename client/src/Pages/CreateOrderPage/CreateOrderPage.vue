@@ -4,7 +4,7 @@
       this.$router.replace('/orders');
     }">&#8592; Назад</p>
     <h1 :class="$style.contentHeader">Формирование заказа</h1>
-    <form :class="$style.formContainer" @submit="addNewOrder($event. this.$router)">
+    <form :class="$style.formContainer" @submit="addNewOrder($event, this.$router)">
       <div :class="$style.selectBlock">
         <p :class="$style.selectHeader">Тип услуги: </p>
         <select v-model="typeOfJob">
@@ -64,7 +64,7 @@
           </option>
         </select>
       </div>
-      <button :class="$style.submitButton">Создать</button>
+      <button :class="$style.submitButton" >Создать</button>
     </form>
 
 
@@ -116,6 +116,7 @@ export default {
             .then(result => result)
             .catch(error => console.log('error', error));
       }
+      console.log(10)
       let car = await fetch(`http://localhost:5000/car/current?VIN=${this.$refs.VINInput.value}`, requestOptions).then(res=>res.json()).then(data=>data).catch(e=>console.log(e));
       if(car===null){
         let raw = JSON.stringify({
